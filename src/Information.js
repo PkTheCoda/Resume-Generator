@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function Information(props) {
 
@@ -18,7 +18,6 @@ function Information(props) {
       achievements: ""
     }
   ])
-
 
   const [jobExperiences, setJobExperiences] = useState([
     {
@@ -88,6 +87,8 @@ function Information(props) {
         <textarea 
             type="textarea"
             placeholder="A nice description of yourself . . ." 
+            onChange={handleChange}
+            name="summary"
           />
 
         </div>
@@ -180,9 +181,14 @@ function Information(props) {
 
           <div className="personal--preview preview--section">
 
-            <h1 className="name--holder info-holder">{personalEducation.firstname} {personalEducation.lastname}</h1>
+            <h1 className="name--holder info-holder">{personalEducation.firstname} {personalEducation.lastname} </h1>
 
-            <div className="email-phone-holder info-holder">{personalEducation.email}, {personalEducation.phone}</div>
+            <div className="email-phone-holder info-holder">{personalEducation.email} {personalEducation.phone}</div>
+
+            <h2 class="info-holder summary-title">Summary:</h2>
+            <div className="summary-holder info-holder">{personalEducation.summary}</div>
+
+
 
           </div>
 
