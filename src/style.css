@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Outfit&family=Quicksand&display=swap');
 
+:root {
+  --main-font: 'Quicksand', sans-serif;
+}
+
 h1,
 p {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -31,7 +35,7 @@ body {
 }
 
 .header--title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--main-font);
   font-weight: 500;
   font-size:3vw;
   padding-left: 1em;
@@ -45,7 +49,66 @@ body {
 }
 
 .information--holder {
-  width:50%;
+  width:35%;
+  height:max-content;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 5px solid black;
+}
+
+.preview--holder {
+  width:65%;
   height:100%;
-  background-color:blue;
+}
+
+.content--title {
+  font-family: var(--main-font);
+  margin-top: 1em;
+}
+
+.holder {
+  border: 2px solid grey;
+  border-radius:20px;
+  height: max-content;
+  width: 90%;
+  margin-top: 1em;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  margin-top: 1em;
+  height: 3em;
+  width: 90%;
+  padding: 5px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  font-family: var(--main-font)
+}
+
+input:hover {
+  border: 2px solid black;
+}
+
+textarea {
+  margin: 1em 0em 1em 0em;
+  padding:10px;
+  width: 60%;
+}
+
+label {
+  font-family: var(--main-font);
+  margin-top: 0.5em;
+  font-weight: 600;
+  display: block;
+}
+
+.label-input-pair {
+  width: 90%;
+}
+
+.label-input {
+  width:100%;
 }
