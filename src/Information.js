@@ -3,6 +3,23 @@ import { useState } from 'react'
 
 function Information(props) {
 
+  const [personalEducation, setPersonalEducation] = useState([
+    {
+      firstname: "",
+      lastname: "",
+      email: "",
+      address: "",
+      phone: "",
+      summary: "",
+      school: "",
+      field: "",
+      gradDate: "",
+      location: "",
+      achievements: ""
+    }
+  ])
+
+
   const [jobExperiences, setJobExperiences] = useState([
     {
       employer: "",
@@ -13,6 +30,15 @@ function Information(props) {
       responsibilites: ""
     }
   ])
+
+  function handleChange(event) {
+    setPersonalEducation(prevArray => {
+      return {
+        ...prevArray,
+        [event.target.name] : [event.target.value]
+      }
+    })
+  }
 
 
 
@@ -26,27 +52,37 @@ function Information(props) {
 
           <input 
             type="text"
-            placeholder="First Name" 
+            placeholder="First Name"
+            onChange={handleChange}
+            name="firstname" 
           />
 
           <input 
             type="text"
             placeholder="Last Name" 
+            onChange={handleChange}
+            name="lastname"
           />
 
           <input 
             type="email"
             placeholder="Your Email" 
+            onChange={handleChange}
+            name="email"
           />
 
           <input 
-            type="email"
+            type="text"
             placeholder="Address" 
+            onChange={handleChange}
+            name="address"
           />
 
           <input 
             type="text"
             placeholder="Phone #" 
+            onChange={handleChange}
+            name="phone"
           />
 
         <textarea 
@@ -58,7 +94,7 @@ function Information(props) {
 
         {/* JOB EXPERIENCES HOLDER */}
         <div className="experience--holder holder">
-          <h3 className="content--title">Job Experience:</h3>
+          <h3 className="content--title">Job Experience(s):</h3>
 
           <input 
             type="text"
@@ -140,7 +176,24 @@ function Information(props) {
       </div>
 
       <div className="preview--holder"> 
-        Hi
+        <div className="preview--modal">
+
+          <div className="personal--preview preview--section">
+
+            <h1 className="name--holder info-holder">{personalEducation.firstname} {personalEducation.lastname}</h1>
+
+            <div className="email-phone-holder info-holder">{personalEducation.email}, {personalEducation.phone}</div>
+
+          </div>
+
+          <div className="jobs--preview preview--section">
+
+          </div>
+
+          <div className="education--preview preview--section">
+
+          </div>
+        </div>
       </div>
   </>
   )
