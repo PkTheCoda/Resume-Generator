@@ -2,10 +2,25 @@ import React from 'react'
 import { useState } from 'react'
 
 function Information(props) {
+
+  const [jobExperiences, setJobExperiences] = useState([
+    {
+      employer: "",
+      role: "",
+      from: "",
+      to: "",
+      location: "",
+      responsibilites: ""
+    }
+  ])
+
+
+
   return (
     <>
       <div className="information--holder"> 
 
+        {/* PERSONAL INFORMATION HOLDER */}
         <div className="personal--holder holder">
           <h3 className="content--title">Personal Info:</h3>
 
@@ -41,6 +56,7 @@ function Information(props) {
 
         </div>
 
+        {/* JOB EXPERIENCES HOLDER */}
         <div className="experience--holder holder">
           <h3 className="content--title">Job Experience:</h3>
 
@@ -82,8 +98,11 @@ function Information(props) {
             placeholder="What were your responsibilities and accomplishments?"
           />
 
+          <button className="add--button button">Add Job Experience</button>
+
         </div>
 
+        {/* EDUCATION HOLDER */}
         <div className="education--holder holder">
           <h3 className="content--title">Relevant Education:</h3>
 
