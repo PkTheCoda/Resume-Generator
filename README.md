@@ -52,6 +52,7 @@ Phew. This project was actually a lot of work. I had to use so much of what I le
 
 I definitely want to come back to this project at a later time, and if I do, I would probably add these functionalities:
 <ol>
+  <li>Generate to PDF button</li>
   <li>Add a dark/light mode and be able to toggle them</li>
   <li>Be able to delete job experiences</li>
   <li>Be able to add additional Educational Experiences</li>
