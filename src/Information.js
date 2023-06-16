@@ -52,6 +52,8 @@ function Information(props) {
     })
   }
 
+
+
   function handleJobExperiences() {
     setJobExperiences(prevArray => {
       return {
@@ -163,19 +165,12 @@ function Information(props) {
       name={`responsibilites${numOfJobs.length}`}
     /></>]);
 
-
-    
-
-    console.log(numOfJobs.length + "BEFORE")
-
-
     setNumOfJobs(prevNumOfJobs => [...prevNumOfJobs, prevNumOfJobs.length + 1])
-    
-    console.log(numOfJobs.length + "AFTER")
+
     console.log(jobExperiences)
   }
 
-  console.log(jobExperiences[`employer${numOfJobs.length - 1}`])
+  console.log(jobExperiences.employer1)
 
 
 
@@ -365,7 +360,16 @@ function Information(props) {
           {jobExperiences.responsibilites0 !== "" && <h3 className="info-holder" style={{marginTop: "0.5em"}}>Job Responsibilities:</h3>}
           <div className="info-holder">{jobExperiences.responsibilites0}</div>
 
-          {newJobBlocks}
+          {/* {numOfJobs.map(item => <div>{jobExperiences[`employer${item}`]}</div>)} */}
+
+          {numOfJobs.map(item => <>
+          <br />
+          {jobExperiences[`employer${item}`] && <h1 className="info-holder" style={{marginBottom: "0.25em"}}>Experience #{item + 1}</h1>}
+          <div className="info-holder">{jobExperiences[`employer${item}`]} {jobExperiences[`employer${item}`] !== undefined && "|"} {jobExperiences[`location${item}`]}</div>
+          <div className="info-holder">{jobExperiences[`role${item}`]} {jobExperiences[`role${item}`] !== undefined && ","} {jobExperiences[`from${item}`]} {jobExperiences[`from${item}`] !== undefined && "-"} {jobExperiences[`to${item}`]}</div>
+
+          {jobExperiences[`responsibilites${item}`] !== undefined && <h3 className="info-holder" style={{marginTop: "0.5em"}}>Job Responsibilities:</h3>}
+          <div className="info-holder">{jobExperiences[`responsibilites${item}`]}</div></>)}
           </div>
 
           {/* EDUCATION PREVIEW SECTION */}
