@@ -1,9 +1,9 @@
 # About this Project
-<h3><a href="https://stackblitz-starters-poqhpv.stackblitz.io/">Live Demo</a></h3>
+<h3><a href="https://stackblitz-starters-poqhpv.stackblitz.io/" target="_blank">Live Demo</a></h3>
 This was a resume maker that I decided to build for the fun of it. I have been learning react for the past few weeks, and decided that it would be a good time to try and put my React skills to the test! This project is simple in concept -- you enter your details like job experience, name, email, address, education, and more and the generator will create a live resume side by side (you can see you're resume being created live while you enter your details)! Overall, it was a very fun (but also pretty hard) project to work on!
 
 # How to Use it/How it Works
-You can start by first opening up the website [here](https://stackblitz-starters-poqhpv.stackblitz.io/). You'll be greeted with a page that looks something like this:
+You can start by first opening up the website <a href="https://stackblitz-starters-poqhpv.stackblitz.io/" target="_blank">here</a>. You'll be greeted with a page that looks something like this:
 
 
 <img width="1265" alt="image" src="https://github.com/PkTheCoda/resume-maker/assets/107774675/3ece656b-4bd8-494c-a387-85ee27140716">
