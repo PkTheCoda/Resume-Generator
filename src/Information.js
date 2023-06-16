@@ -19,16 +19,18 @@ function Information(props) {
     }
   )
 
-    const [numOfJobs, setNumOfJobs] = useState(1)
+  const [numOfJobs, setNumOfJobs] = useState([1])
+  const [newInputs, setNewInputs] = useState()
+  const [newJobBlocks, setNewJobBlocks] = useState()
   
   const [jobExperiences, setJobExperiences] = useState(
     {
-      employer: "",
-      role: "",
-      from: "",
-      to: "",
-      location: "",
-      responsibilites: ""
+      employer0 : "",
+      role0: "",
+      from0: "",
+      to0: "",
+      location0: "",
+      responsibilites0: ""
     }
   )
 
@@ -54,19 +56,124 @@ function Information(props) {
     setJobExperiences(prevArray => {
       return {
         ...prevArray,
-        [`employer${numOfJobs}`] : "",
-        [`role${numOfJobs}`] : "",
-        [`from${numOfJobs}`] : "",
-        [`to${numOfJobs}`] : "",
-        [`location${numOfJobs}`] : "",
-        [`responsibilites${numOfJobs}`] : ""
+        [`employer${numOfJobs.length}`] : "",
+        [`role${numOfJobs.length}`] : "",
+        [`from${numOfJobs.length}`] : "",
+        [`to${numOfJobs.length}`] : "",
+        [`location${numOfJobs.length}`] : "",
+        [`responsibilites${numOfJobs.length}`] : ""
       }
     })
-    setNumOfJobs(prevNumber => prevNumber + 1)
-    console.log(numOfJobs)
+    
+    setNewInputs(prevInputs => prevInputs ? [...prevInputs, <><input 
+      type="text"
+      placeholder="Employer"
+      onChange={handleJobChanges}
+      name={`employer${numOfJobs.length}`}
+    />
+
+    <input 
+      type="text"
+      placeholder="Role or Job Title" 
+      onChange={handleJobChanges}
+      name={`role${numOfJobs.length}`}
+    />
+
+    <div className="label-input-pair">
+      <label htmlFor="from-job">From:</label>
+      <input 
+        className="label-input"
+        id="from-job"
+        type="date" 
+        onChange={handleJobChanges}
+        name={`from${numOfJobs.length}`}
+      />
+    </div>
+
+    <div className="label-input-pair">
+      <label htmlFor="to-job">To:</label>
+      <input 
+        className="label-input"
+        id="to-job"
+        type="date" 
+        onChange={handleJobChanges}
+        name={`to${numOfJobs.length}`}
+      />
+    </div>
+
+    <input 
+      type="text"
+      placeholder="Job Location"
+      onChange={handleJobChanges}
+      name={`location${numOfJobs.length}`}
+    />
+
+    <textarea 
+      type="text"
+      placeholder="What were your responsibilities and accomplishments?"
+      onChange={handleJobChanges}
+      name={`responsibilites${numOfJobs.length}`}
+    /></>] : [<><input 
+      type="text"
+      placeholder="Employer"
+      onChange={handleJobChanges}
+      name={`employer${numOfJobs.length}`}
+    />
+
+    <input 
+      type="text"
+      placeholder="Role or Job Title" 
+      onChange={handleJobChanges}
+      name={`role${numOfJobs.length}`}
+    />
+
+    <div className="label-input-pair">
+      <label htmlFor="from-job">From:</label>
+      <input 
+        className="label-input"
+        id="from-job"
+        type="date" 
+        onChange={handleJobChanges}
+        name={`from${numOfJobs.length}`}
+      />
+    </div>
+
+    <div className="label-input-pair">
+      <label htmlFor="to-job">To:</label>
+      <input 
+        className="label-input"
+        id="to-job"
+        type="date" 
+        onChange={handleJobChanges}
+        name={`to${numOfJobs.length}`}
+      />
+    </div>
+
+    <input 
+      type="text"
+      placeholder="Job Location"
+      onChange={handleJobChanges}
+      name={`location${numOfJobs.length}`}
+    />
+
+    <textarea 
+      type="text"
+      placeholder="What were your responsibilities and accomplishments?"
+      onChange={handleJobChanges}
+      name={`responsibilites${numOfJobs.length}`}
+    /></>]);
+
+
+    
+
+
+    setNewJobBlocks(prevInputs => prevInputs ? [...prevInputs, <div className="info-holder">{jobExperiences[`employer${numOfJobs.length}`]}</div>] : [<div className="info-holder">{jobExperiences[`employer${numOfJobs.length}`]}</div>]);
+
+    setNumOfJobs(prevNumOfJobs => [...prevNumOfJobs, prevNumOfJobs.length + 1])
     console.log(jobExperiences)
   }
 
+  console.log(jobExperiences.employer2)
 
 
   return (
@@ -129,14 +236,14 @@ function Information(props) {
             type="text"
             placeholder="Employer"
             onChange={handleJobChanges}
-            name="employer"
+            name="employer0"
           />
 
           <input 
             type="text"
             placeholder="Role or Job Title" 
             onChange={handleJobChanges}
-            name="role"
+            name="role0"
           />
 
           <div className="label-input-pair">
@@ -146,7 +253,7 @@ function Information(props) {
               id="from-job"
               type="date" 
               onChange={handleJobChanges}
-              name="from"
+              name="from0"
             />
           </div>
 
@@ -157,7 +264,7 @@ function Information(props) {
               id="to-job"
               type="date" 
               onChange={handleJobChanges}
-              name="to"
+              name="to0"
             />
           </div>
 
@@ -165,16 +272,17 @@ function Information(props) {
             type="text"
             placeholder="Job Location"
             onChange={handleJobChanges}
-            name="location"
+            name="location0"
           />
 
           <textarea 
             type="text"
             placeholder="What were your responsibilities and accomplishments?"
             onChange={handleJobChanges}
-            name="responsibilites"
+            name="responsibilites0"
           />
 
+          {newInputs}
           <button className="add--button button" onClick={handleJobExperiences}>Add Job Experience</button>
 
         </div>
@@ -246,13 +354,15 @@ function Information(props) {
 
           {/* JOB PREVIEW SECTION */}
           <div className="jobs--preview preview--section">
-          {jobExperiences.employer && <h2 className="name--holder info-holder" style={{marginBottom: "0.25em"}}>Experiences:</h2>}
+          {jobExperiences.employer0 && <h2 className="name--holder info-holder" style={{marginBottom: "0.25em"}}>Experiences:</h2>}
 
-          <div className="info-holder">{jobExperiences.employer} {jobExperiences.employer !== "" && "|"} {jobExperiences.location}</div>
-          <div className="info-holder">{jobExperiences.role} {jobExperiences.role !== "" && ","} {jobExperiences.from} {jobExperiences.from !== "" && "-"} {jobExperiences.to}</div>
+          <div className="info-holder">{jobExperiences.employer0} {jobExperiences.employer0 !== "" && "|"} {jobExperiences.location0}</div>
+          <div className="info-holder">{jobExperiences.role0} {jobExperiences.role0 !== "" && ","} {jobExperiences.from0} {jobExperiences.from0 !== "" && "-"} {jobExperiences.to0}</div>
 
-          {jobExperiences.responsibilites !== "" && <h3 className="info-holder" style={{marginTop: "0.5em"}}>Job Responsibilities:</h3>}
-          <div className="info-holder">{jobExperiences.responsibilites}</div>
+          {jobExperiences.responsibilites0 !== "" && <h3 className="info-holder" style={{marginTop: "0.5em"}}>Job Responsibilities:</h3>}
+          <div className="info-holder">{jobExperiences.responsibilites0}</div>
+
+          {newJobBlocks}
           </div>
 
           {/* EDUCATION PREVIEW SECTION */}
@@ -266,10 +376,7 @@ function Information(props) {
 
            {personalEducation.achievements && <h3 className="info-holder achievement--title" >Achievements:</h3>}
             <div className="info-holder">{personalEducation.achievements}</div>
-          </div>
-
-
-          
+          </div>         
 
 
         </div>
