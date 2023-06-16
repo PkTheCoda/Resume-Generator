@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 function Information(props) {
 
-  const [personalEducation, setPersonalEducation] = useState([
+  const [personalEducation, setPersonalEducation] = useState(
     {
       firstname: "",
       lastname: "",
@@ -17,7 +17,9 @@ function Information(props) {
       location: "",
       achievements: ""
     }
-  ])
+  )
+
+
 
   const [jobExperiences, setJobExperiences] = useState([
     {
@@ -34,7 +36,7 @@ function Information(props) {
     setPersonalEducation(prevArray => {
       return {
         ...prevArray,
-        [event.target.name] : [event.target.value]
+        [event.target.name] : event.target.value
       }
     })
   }
@@ -146,11 +148,16 @@ function Information(props) {
           <input 
             type="text"
             placeholder="School/University" 
+            onChange={handleChange}
+            name="school"
           />
 
           <input 
             type="text"
             placeholder="Field of Study" 
+            onChange={handleChange}
+            name="field"
+            
           />
 
           <div className="label-input-pair">
@@ -160,16 +167,22 @@ function Information(props) {
               type="date"
               placeholder="Graduation Date" 
               id="grad--date"
+              onChange={handleChange}
+              name="gradDate"
             />
           </div>
 
           <input 
             type="text"
             placeholder="Location" 
+            onChange={handleChange}
+            name="location"
           />
 
           <textarea
             placeholder="What are your academic achievements?"
+            onChange={handleChange}
+            name="achievements"
           />
 
         </div>
@@ -181,12 +194,13 @@ function Information(props) {
 
           <div className="personal--preview preview--section">
 
-            <h1 className="name--holder info-holder">{personalEducation.firstname} {personalEducation.lastname} </h1>
+            <h1 className="name--holder info-holder" style={{borderBottom: personalEducation.firstname !== "" ? "4px solid grey" : "0px solid grey"}}>{personalEducation.firstname} {personalEducation.lastname} </h1>
 
             <div className="email-phone-holder info-holder">{personalEducation.email} {personalEducation.phone}</div>
 
-            <h2 class="info-holder summary-title">Summary:</h2>
-            <div className="summary-holder info-holder">{personalEducation.summary}</div>
+            {personalEducation.summary !== "" && <h2 className="info-holder summary-title">Summary:</h2>}
+            
+            <div className="summary-holder info-holder" style={{borderTop: personalEducation.summary !== "" ? "4px solid grey" : "0px solid grey"}}>{personalEducation.summary}</div>
 
 
 
@@ -198,7 +212,20 @@ function Information(props) {
 
           <div className="education--preview preview--section">
 
+            <h2 className="info-holder education--title">Education:</h2>
+
+            <div className="school-location-holder info-holder">{personalEducation.school}, {personalEducation.field} {personalEducation.gradDate}</div>
+
+            <div className="location--holder info-holder">{personalEducation.location}</div>
+
+            <h3 className="info-holder achievement--title" style={{margin: "0.5em 0em 0.5em 0em", paddingBottom: "1em"}}>Achievements:</h3>
+            <div className="info-holder">{personalEducation.achievements}</div>
           </div>
+
+
+          
+
+
         </div>
       </div>
   </>
