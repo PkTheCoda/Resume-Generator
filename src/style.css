@@ -166,6 +166,7 @@ button:hover {
 
 .name--holder {
   font-size:40px;
+  border-bottom: 4px solid grey;
 }
 
 .email-phone-holder {
@@ -191,6 +192,8 @@ button:hover {
 
 .achievement--title {
   border-bottom: 3px solid grey;
+  margin-top: 0.5em;
+  padding-bottom: 1em;
 }
 
 .divider-line {
