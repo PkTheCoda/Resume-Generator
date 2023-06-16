@@ -166,14 +166,17 @@ function Information(props) {
 
     
 
+    console.log(numOfJobs.length + "BEFORE")
 
-    setNewJobBlocks(prevInputs => prevInputs ? [...prevInputs, <div className="info-holder">{jobExperiences[`employer${numOfJobs.length}`]}</div>] : [<div className="info-holder">{jobExperiences[`employer${numOfJobs.length}`]}</div>]);
 
     setNumOfJobs(prevNumOfJobs => [...prevNumOfJobs, prevNumOfJobs.length + 1])
+    
+    console.log(numOfJobs.length + "AFTER")
     console.log(jobExperiences)
   }
 
-  console.log(jobExperiences.employer2)
+  console.log(jobExperiences[`employer${numOfJobs.length - 1}`])
+
 
 
   return (
